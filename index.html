@@ -18,7 +18,7 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Work Day Scheduler</title>
   </head>
 
@@ -28,20 +28,19 @@
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
     </header>
-    <div class="container">
+    <div class="container col-12">
       <!-- Timeblocks go here -->
-      <div class="time-block">
+      <div class="time-block row">
         <!--time-->
-        <div class="hour"></div>
+        <div id="hour" class="hour col-12 col-sm-1 d-flex align-items-center"></div>
         <!--textarea for event-->
-        <textarea class="description" placeholder="Enter Your Event Details Here"></textarea>
-        <button type="submit" class="saveBtn"></button>
-
+        <textarea id="details" class="description col-11 col-sm-10" placeholder="Enter Your Event Details Here"></textarea>
+        <button id="saveBtn" type="submit" class="saveBtn col-1"><i class="far fa-save"></i></button>
       </div>
       
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="luxon.js"></script>
+    <script src=""></script>
   </body>
 </html>
