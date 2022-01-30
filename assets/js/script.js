@@ -71,6 +71,12 @@ $(document).ready(function(){
 
 
 
+    $(".container").append("<div class='m-2 d-flex flex-column'><button class='deleteBtn'><i class='fas fa-trash'></i>CLEAR ALL</button></div>")
+
+    $(".deleteBtn").on("click", function(){
+        location.reload()
+        localStorage.clear();
+    });
 });
 
 
