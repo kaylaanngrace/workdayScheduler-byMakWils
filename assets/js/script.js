@@ -69,7 +69,35 @@ $(document).ready(function(){
             window.localStorage.setItem(JSON.stringify(time), text);
         })
 
-
+        function timeAudit() {
+            //get current number of hours.
+            var currentTime = today.hour
+        
+            // loop over time blocks
+            $(".time-block").each(function () {
+                var timeBlock = parseInt($(this).attr("id"));;
+        
+                // To check the time and add the classes for background indicators
+                if (timeBlock < currentTime) {
+                    $(this).removeClass("future");
+                    $(this).removeClass("present");
+                    $(this).addClass("past");
+                }
+                else if (timeBlock === currentTime) {
+                    $(this).removeClass("past");
+                    $(this).removeClass("future");
+                    $(this).addClass("present");
+                }
+                else {
+                    $(this).removeClass("present");
+                    $(this).removeClass("past");
+                    $(this).addClass("future");
+        
+                }
+            })
+        }
+        timeAudit();
+    });
 
     $(".container").append("<div class='m-2 d-flex flex-column'><button class='deleteBtn'><i class='fas fa-trash'></i>CLEAR ALL</button></div>")
 
