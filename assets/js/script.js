@@ -27,13 +27,14 @@ $(document).ready(function(){
         hour10 = {hour: '10' + 'am'},
         hour11 = {hour: '11' + 'am'},
         hour12 = {hour: '12' + 'pm'},
-        hour13 = {hour: '1' + 'pm'}, 
-        hour14 = {hour: '2' + 'pm'}, 
-        hour15 = {hour: '3' + 'pm'}, 
-        hour16 = {hour: '4' + 'pm'}, 
-        hour17 = {hour: '5' + 'pm'},
-        hour18 = {hour: '6' + 'pm'}, 
-        hour19 = {hour: '7' + 'pm'},  
+        hour13 = {hour: '13' + 'pm'}, 
+        hour14 = {hour: '14' + 'pm'}, 
+        hour15 = {hour: '15' + 'pm'}, 
+        hour16 = {hour: '16' + 'pm'}, 
+        hour17 = {hour: '17' + 'pm'},
+        hour18 = {hour: '18' + 'pm'}, 
+        hour19 = {hour: '19' + 'pm'},  
+
     ];
 
     currentHourIndex = 0
@@ -57,7 +58,7 @@ $(document).ready(function(){
 
 
     $.each(hours, function(index, value) {
-        $(".container").append("<div class='time-block row d-flex flex-wrap'> <div class='hour col-1 d-flex align-items-center justify-content-end' id='hour" + (index+8) + "'><span>" + value.hour +  "</span></div><textarea id='details' class='col-10' type='text' placeholder='Enter Your Event Details Here'" + (index+8) + "'>" + textboxes[index] + "</textarea>"+ "<button id='saveBtn' type='submit' class='saveBtn col-1'><i class='far fa-save'></i></button></div>")
+        $(".container").append("<div class='time-block row d-flex flex-wrap'> <div class='hour col-1 d-flex align-items-center justify-content-end' id='hour" + value.hour + "'><span>" + value.hour +  "</span></div><textarea id='details" + value.hour +"' class='col-10' type='text' placeholder='Enter Your Event Details Here'" + index + "'>" + textboxes[index] + "</textarea>"+ "<button id='saveBtn' type='submit' class='saveBtn col-1'><i class='far fa-save'></i></button></div>")
 
             // saveBtn click listener 
         $(".saveBtn").on("click", function () {
@@ -69,34 +70,29 @@ $(document).ready(function(){
             window.localStorage.setItem(JSON.stringify(time), text);
         })
 
-        function timeAudit() {
-            //get current number of hours.
-            var currentTime = today.hour
-        
-            // loop over time blocks
-            $(".time-block").each(function () {
-                var timeBlock = parseInt($(this).attr("id"));;
-        
-                // To check the time and add the classes for background indicators
-                if (timeBlock < currentTime) {
-                    $(this).removeClass("future");
-                    $(this).removeClass("present");
-                    $(this).addClass("past");
-                }
-                else if (timeBlock === currentTime) {
-                    $(this).removeClass("past");
-                    $(this).removeClass("future");
-                    $(this).addClass("present");
-                }
-                else {
-                    $(this).removeClass("present");
-                    $(this).removeClass("past");
-                    $(this).addClass("future");
-        
-                }
-            })
-        }
-        timeAudit();
+        $("#details" + value.hour).each(function () {
+            var timeAudit = parseInt(value.hour) ;
+            var currentTime = parseInt(today.hour);
+            console.log(timeAudit);
+            console.log(currentTime)
+
+            if (timeAudit < currentTime) {
+                $(this).removeClass("future");
+                $(this).removeClass("present");
+                $(this).addClass("past");
+            }
+            else if (timeAudit === currentTime) {
+                $(this).removeClass("past");
+                $(this).removeClass("future");
+                $(this).addClass("present");
+            }
+            else {
+                $(this).removeClass("present");
+                $(this).removeClass("past");
+                $(this).addClass("future");
+    
+            }
+        });
     });
 
     $(".container").append("<div class='m-2 d-flex flex-column'><button class='deleteBtn'><i class='fas fa-trash'></i>CLEAR ALL</button></div>")
