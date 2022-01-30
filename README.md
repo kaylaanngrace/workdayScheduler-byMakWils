@@ -15,7 +15,7 @@ First, in the js file, I added a few variables to select elements from my HTML. 
 ## USAGE
 To sort events for the day by hour
 
-![Workday Scheduler](../assets/images/WorkdaySch.png)
+![Workday Scheduler](./assets/images/WorkdaySch.jpeg)
 
 ## CREDITS 
 how to use Luxon - https://www.youtube.com/watch?v=vAuUzEwTbck
