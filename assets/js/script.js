@@ -5,8 +5,9 @@ var saveButtonEl = document.querySelector("#saveBtn");
 
 $(document).ready(function(){
     var DateTime = luxon.DateTime;
-    var today;
-
+    var today = DateTime.local();
+    
+    
     function updateDateTime() {
         today = DateTime.local();
         currentDayEl.textContent = today.toLocaleString(DateTime.DATE_HUGE);
@@ -21,7 +22,7 @@ $(document).ready(function(){
     updateDateTime();
 
     // hours
-    var hours = [
+    var hours =[
         hour8 = {hour: '8' + 'am'},
         hour9 = {hour: '9' + 'am'},
         hour10 = {hour: '10' + 'am'},
@@ -34,9 +35,8 @@ $(document).ready(function(){
         hour17 = {hour: '17' + 'pm'},
         hour18 = {hour: '18' + 'pm'}, 
         hour19 = {hour: '19' + 'pm'},  
-
     ];
-
+    
     currentHourIndex = 0
 
 
@@ -73,7 +73,6 @@ $(document).ready(function(){
         $("#details" + value.hour).each(function () {
             var timeAudit = parseInt(value.hour) ;
             var currentTime = parseInt(today.hour);
-            console.log(timeAudit);
             console.log(currentTime)
 
             if (timeAudit < currentTime) {
