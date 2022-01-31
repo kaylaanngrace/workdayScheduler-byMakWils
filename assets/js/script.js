@@ -58,16 +58,17 @@ $(document).ready(function(){
 
 
     $.each(hours, function(index, value) {
-        $(".container").append("<div class='time-block row d-flex flex-wrap'> <div class='hour col-1 d-flex align-items-center justify-content-end' id='hour" + value.hour + "'><span>" + value.hour +  "</span></div><textarea id='details" + value.hour +"' class='col-10' type='text' placeholder='Enter Your Event Details Here'" + index + "'>" + textboxes[index] + "</textarea>"+ "<button id='saveBtn' type='submit' class='saveBtn col-1'><i class='far fa-save'></i></button></div>")
+        $(".container").append("<div class='time-block row d-flex flex-wrap'> <div class='hour col-1 d-flex align-items-center justify-content-end' id='hour" + value.hour + "'><span>" + value.hour +  "</span></div><textarea id='details" + value.hour +"' class='col-10' type='text' placeholder='Enter Your Event Details Here'" + (index) + "'>" + textboxes[index] + "</textarea>"+ "<button id='saveBtn' type='submit' class='saveBtn col-1'><i class='far fa-save'></i></button></div>")
 
             // saveBtn click listener 
         $(".saveBtn").on("click", function () {
             
-            var text = $(this).siblings("#details").val().trim();
+            var text = $(this).siblings("#details" + value.hour).val().trim();
+            console.log(text)
             var time = $(this).siblings(".hour").text().trim();
 
             // Save text in local storage
-            window.localStorage.setItem(JSON.stringify(time), text);
+            JSON.stringify(window.localStorage.setItem(time, text));
         })
 
         $("#details" + value.hour).each(function () {
