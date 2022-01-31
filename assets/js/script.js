@@ -62,9 +62,8 @@ $(document).ready(function(){
 
             // saveBtn click listener 
         $(".saveBtn").on("click", function () {
-            
-            var text = $(this).siblings("#details" + value.hour).val().trim();
-            console.log(text)
+            // i got help from AskBCS Learning Assitant named Royce for my .trim error in the console
+            var text = $(this).siblings("textarea").val().trim();
             var time = $(this).siblings(".hour").text().trim();
 
             // Save text in local storage
